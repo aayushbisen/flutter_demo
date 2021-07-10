@@ -10,6 +10,7 @@ A simple authetication system built using Firebase Email and Password Authentica
 <img src="screenshots/dashboard.png" height=500>
 <img src="screenshots/Validation1.png" height=500>
 <img src="screenshots/Validation2.png" height=500>
+<img src="screenshots/Validation3.png" height=500>
 </p>
 
 

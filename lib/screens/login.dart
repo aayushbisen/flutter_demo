@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:email_validator/email_validator.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -136,7 +137,11 @@ class _LoginPageState extends State<LoginPage> {
                         if (value == null || value.isEmpty) {
                           return 'Username is required';
                         }
-                        
+
+                        if (!EmailValidator.validate(value)) {
+                          return 'Enter a valid email';
+                        }
+
                         return null;
                       },
                     ),
@@ -199,7 +204,9 @@ class _LoginPageState extends State<LoginPage> {
                           return;
                         }
                         _formKey.currentState!.save();
-                        _onSubmit();
+                        if (_formKey.currentState!.validate()) {
+                          _onSubmit();
+                        }
                       },
                       child: Text(
                         'Sign In',
@@ -231,6 +238,7 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       ),
-    );;
+    );
+    ;
   }
 }
