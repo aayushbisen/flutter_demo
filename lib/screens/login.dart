@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:email_validator/email_validator.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -24,6 +23,15 @@ class _LoginPageState extends State<LoginPage> {
           .signInWithEmailAndPassword(email: _name, password: _password);
 
       Navigator.of(context).pushNamed('/dashboard');
+    } on FirebaseAuthException catch (error) {
+      String msg = error.message.toString();
+      print(msg);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(msg),
+        backgroundColor: Theme.of(context).errorColor,
+        behavior: SnackBarBehavior.floating,
+        duration: Duration(seconds: 3),
+      ));
     } on PlatformException catch (error) {
       String message = 'Please check your credentials and try again';
 
@@ -136,10 +144,6 @@ class _LoginPageState extends State<LoginPage> {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Username is required';
-                        }
-
-                        if (!EmailValidator.validate(value)) {
-                          return 'Enter a valid email';
                         }
 
                         return null;
