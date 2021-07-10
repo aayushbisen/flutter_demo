@@ -29,8 +29,8 @@ class _RegisterState extends State<Register> {
           .collection('users')
           .doc(authResult.user?.uid)
           .set({'username': _name, 'email': _email});
-
-      Navigator.of(context).pushNamed('/dashboard');
+      Navigator.of(context).pop();
+      Navigator.of(context).pushReplacementNamed('/dashboard');
     } on PlatformException catch (error) {
       String message = 'Please check your credentials and try again';
 

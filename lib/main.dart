@@ -22,16 +22,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: StreamBuilder(
+      home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          if(snapshot.connectionState == ConnectionState.active){
+            User? user = snapshot.data;
+            if(user == null){
+              return LoginPage();
+            }
+            return Dashboard();
+          } else {
             return LoadingPage();
           }
-          if (snapshot.hasData) {
-            Dashboard();
-          }
-          return LoginPage();
         },
       ),
       routes: {
