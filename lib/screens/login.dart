@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -145,8 +146,8 @@ class _LoginPageState extends State<LoginPage> {
                         if (value == null || value.isEmpty) {
                           return 'Username is required';
                         }
-
-                        return null;
+                        final isValidEmail = !EmailValidator.validate(value,true);
+                        return isValidEmail ? 'Enter a valid email.' : null;
                       },
                     ),
                   ),
@@ -166,7 +167,6 @@ class _LoginPageState extends State<LoginPage> {
                         if (value == null || value.isEmpty) {
                           return 'Password is required';
                         }
-
                         return null;
                       },
                       // controller: passwordController,
@@ -243,6 +243,6 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-    ;
+
   }
 }
