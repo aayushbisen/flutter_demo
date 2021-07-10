@@ -1,16 +1,22 @@
-# nodejs_login
+# Flutter Authentication with Firebase
 
-A new Flutter project.
+A simple authetication system built using Firebase Email and Password Authentication.
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+<p align="center">
+<img src="screenshots/login.png" height=500>
+<img src="screenshots/register.png" height=500>
+<img src="screenshots/dashboard.png" height=500>
+<img src="screenshots/Validation1.png" height=500>
+<img src="screenshots/Validation2.png" height=500>
+</p>
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Setup Project
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Clone the repository
+- Run pub get `flutter pub get` to get all the dependencies.
+- Run `flutter run` to compile the debug version on Android Emulator.
+
+
