@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: _name, password: _password);
 
-      Navigator.of(context).pushNamed('/dashboard');
+      Navigator.of(context).pushReplacementNamed('/dashboard');
     } on FirebaseAuthException catch (error) {
       String msg = error.message.toString();
       print(msg);
